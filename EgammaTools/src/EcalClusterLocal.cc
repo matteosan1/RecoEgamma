@@ -92,12 +92,12 @@ void EcalClusterLocal::localCoordsEB( const reco::BasicCluster &bclus, const edm
 void EcalClusterLocal::localCoordsEE( const reco::BasicCluster &bclus, const edm::EventSetup &es, float &xcry, float &ycry, int &ix, int &iy, float &thetatilt, float &phitilt) const
 {
     
-  assert(bclus.hitsAndFractions().at(0).first.subdetId()==EcalEndcap);
+  assert(bclus.hitsAndFractions().at(0).first.subdetId()==EcalShashlik);
   
   edm::ESHandle<CaloGeometry> pG;
   es.get<CaloGeometryRecord>().get(pG); 
   
-  const CaloSubdetectorGeometry* geom=pG->getSubdetectorGeometry(DetId::Ecal,EcalEndcap);//EcalBarrel = 1
+  const CaloSubdetectorGeometry* geom=pG->getSubdetectorGeometry(DetId::Ecal, EcalShashlik);
   
   const math::XYZPoint position_ = bclus.position(); 
   //double Theta = -position_.theta()+0.5*TMath::Pi();
